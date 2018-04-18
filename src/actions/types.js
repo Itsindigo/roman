@@ -1,0 +1,2 @@
+export const GET_ROMAN_NUMBER = 'GET_ROMAN_NUMBER';
+export const SET_SEARCH_TERM = 'SET_SEARCH_TERM'

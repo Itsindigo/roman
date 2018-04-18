@@ -1,17 +1,36 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { setSearchTerm } from '../actions/romanNumberActions';
+
 
 class SearchBar extends Component {
-    constructor(props) {
-        super()
+
+    onChange = (e) =>  {
+        this.props.setSearchTerm(e.target.value);
     }
     
     render() {
         return (
             <div>
-                <input />
+                <form>
+                    <input
+                        onChange={this.onChange}
+                        name="searchTerm"
+                    />
+                </form>
             </div>
         )
     }
 }
 
-export default SearchBar
+const mapStateToProps = state => ({
+    searchTerm: state.romanNumber.searchTerm
+})
+
+SearchBar.propTypes = {
+    setSearchTerm: PropTypes.func.isRequired
+}
+
+
+export default connect(mapStateToProps, { setSearchTerm })(SearchBar);
